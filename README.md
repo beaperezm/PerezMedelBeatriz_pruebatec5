@@ -16,11 +16,11 @@ El usuario puede:
 
 En el proyecto podemos encontrar
 
-- login-page --> es la page de la home, a través de la cuál podremos hacer click en el botón "Crear porductos" y nos redirigirá a: create-product
+- login-page --> es la home, a través de la cuál podremos hacer click en el botón "Crear productos" y nos redirigirá a: create-product
 
 - create-product-page --> es la page en la que encontraremos el formulario a través del cuál insertaremos los productos que queramos agregar - cuando el usuario haga click en el botón "Enviar datos" será redirigido a: list-product
 
-- list-product-page --> es la page en la cuál podrá ver el producto en formato "card"
+- list-product-page --> es la page en la cuál podremos ver el producto en formato "card"
   si quiere insertar más productos hará click en el botón "Atrás" y será redirigido al formulario, sinó en el icono "Salir"(será redirigido a la home)
 
 #### Componentes utilizados:
@@ -155,7 +155,7 @@ this.subscribe("create-product", () => {
 
 #### Uso de Slots
 
-Para asignar dentro del Shadow Root un espacio, y así inyectar desde fuera el formulario
+Para asignar dentro del Shadow Root un espacio, y así inyectar desde fuera, en este ejemplo, el formulario
 
 ```javascript
 <div slot="app-main-content">${this._formCreateProduct}</div>
