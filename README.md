@@ -103,14 +103,12 @@ Para instanciar las propiedades
 
 Los ciclos de vida utilizados para esta aplicación son:
 
-✔️ firstUpdated() --> componente en el que tengo acceso al shadowRoot
+✔️ firstUpdated() --> componente en el que tengo acceso al shadowRoot.
+En este caso estoy accediendo a localStorage para obtener el idioma
 
 ```javascript
  firstUpdated(props) {
     super.firstUpdated && super.firstUpdated(props);
-
-    const queryScope = this.shadowRoot || this;
-    this._form = queryScope.querySelector('form');
     window.IntlMsg.lang = localStorage.getItem('language') || 'es-ES';
   }
 ```
