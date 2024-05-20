@@ -2,6 +2,10 @@
 
 Se trata del desarrollo de una Aplicación para poder crear productos, almacenarlos en el local storage y ver el listado de éstos.
 
+
+https://github.com/beaperezm/PerezMedelBeatriz_pruebatec5/assets/113792109/db5526f7-fdde-4746-9c2c-276951a8de50
+
+
 ## Objetivos del proyecto
 
 El usuario puede:
