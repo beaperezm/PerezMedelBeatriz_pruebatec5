@@ -1,0 +1,39 @@
+@use "node_modules/@bbva-web-components/bbva-foundations-sass/main" as *;
+
+:host {
+    --bbva-web-progress-bar-bg-color: #{token('foundations.colors.secondary300')};
+  
+    display: block;
+    box-sizing: border-box;
+    font-size: token('foundations.typography.typeSmall');
+    line-height: token('foundations.lineHeight.typeSmall');
+  }
+
+
+
+form {
+    width: 40%;
+    margin: 3rem auto 1rem;
+  
+    & > * {
+      margin-bottom: 1rem;
+    }
+  
+    bbva-web-form-fieldset {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  
+    bbva-web-form-text {
+      box-sizing: border-box;
+    }
+  
+    h3 {
+      font-weight: token('foundations.fontFacePrimary.medium.fontWeight');
+    }
+
+    h2 {
+        color: black;
+    }
+  }

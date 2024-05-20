@@ -1,0 +1,26 @@
+{
+  "en": {
+    "login-page.footer-claim": "Creating Opportunities",
+    "login-page.form-button": "Send data",
+    "login-page.form-heading": "Enter data to create a product",
+    "login-page.form-input-1-label": "Product Name",
+    "login-page.form-input-2-label": "Picture (URL)",
+    "login-page.form-input-3-label": "Price",
+    "login-page.menu-create-product": "Create Product",
+    "login-page.card-heading": "Welcome to my first Cells page",
+    "login-page.card.body-text": "This is a page to create products",
+    "list-products-page.back-button": "Back"
+  },
+  "es": {
+    "login-page.footer-claim": "Creando Oportunidades",
+    "login-page.form-button": "Enviar datos",
+    "login-page.form-heading": "Introduce los datos para crear un producto",
+    "login-page.form-input-1-label": "Nombre del producto",
+    "login-page.form-input-2-label": "Imagen (URL)",
+    "login-page.form-input-3-label": "Precio",
+    "login-page.menu-create-product": "Crear Producto",
+    "login-page.card-heading": "Bienvenidos/as a mi primera página con Cells" ,
+    "login-page.card.body-text": "Se trata de un página para crear productos",
+    "list-products-page.back-button": "Atrás"
+  }
+}
