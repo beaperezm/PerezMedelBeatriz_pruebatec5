@@ -33,6 +33,7 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
     };
   }
 
+  // 👍 muy bien inicializando las propiedades y si del objeto sabemos las keys, mucho mejor
   constructor() {
     super();
     this.i18nKeys = {};
@@ -63,6 +64,7 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
     super.update && super.update(props);
   }
 
+  // Deberíamos traducir el titulo de la pagina
   render() {
     return html`
      <demo-web-template
@@ -77,13 +79,16 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
   /* I use @input event because I want to log the value whenever the user change it */
+
+  // Realmente no hace falta guardar el valor cuando metes el valor en el input, solo nos hace falta al darle al botón de "crear producto"
+  // Es importante el Name en los componentes de tipo input, con el name podemos captar los valores
   get _formCreateProduct() {
     return html`
         <form enctype="multipart/form-data">
           <h2>${this.t(this._i18nKeys.formHeading)}</h2>
-          <bbva-web-form-text id="productName" label="${this.t(this._i18nKeys.labelInput1)}" value="${this.formProduct.productName}" @input="${this._handleForm}" ></bbva-web-form-text>
-          <bbva-web-form-text id="picture" label="${this.t(this._i18nKeys.labelInput2)}" value="${this.formProduct.picture}" @input="${this._handleForm}" ></bbva-web-form-text>
-          <bbva-web-form-amount id="price" label="${this.t(this._i18nKeys.labelInput3)}" value="${this.formProduct.price}" @input="${this._handleForm}" ></bbva-web-form-amount>
+          <bbva-web-form-text name="productName" id="productName" label="${this.t(this._i18nKeys.labelInput1)}" value="${this.formProduct.productName}"></bbva-web-form-text>
+          <bbva-web-form-text name="picture" id="picture" label="${this.t(this._i18nKeys.labelInput2)}" value="${this.formProduct.picture}"></bbva-web-form-text>
+          <bbva-web-form-amount name="price" id="price" label="${this.t(this._i18nKeys.labelInput3)}" value="${this.formProduct.price}"></bbva-web-form-amount>
           <bbva-web-button-default
             id="send"
             type="submit" 
@@ -96,6 +101,7 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
   /* I use this method to create a copy of formProduct object and collects the value of the productName, picture and price inputs */
+  // NO LA NECESITAMOS si nos apoyamos en submit del form
   _handleForm(ev) {
     this.formProduct = {
       ...this.formProduct,
@@ -105,17 +111,36 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
 
+  // Nos apoyamos en New FormData Nativo de JS
+  // https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
   _handleSendData(ev) {
     ev.preventDefault();
     ev.stopPropagation();
 
-    this.productsList.push(this.formProduct);
+    const form  = ev.currentTarget.closest('form');
+    const dataForm = new FormData(form);
+
+    this.formProduct = {
+      productName: dataForm.get('productName'),
+      picture: dataForm.get('picture'),
+      price: dataForm.get('price'),
+    };
+
+    this.productsList = [
+      ...this.productsList,
+      this.formProduct,
+    ];
+
+    // Recuerda evitar utilizar push porque al ser un tipo complejo puede verse afectada la reactividad, siempre utulizamos operador spread
+    //this.productsList.push(this.formProduct);
 
     localStorage.setItem('formProduct', JSON.stringify(this.productsList));
 
 
+    // 👍 muy bien publicamos en el canal, recuerda... los canales deberían tener en el nombre "channel-tu-canal-"
     this.publish('create-product', this.productsList);
     this.navigate('list-products');
+    // 👍 muy bien, reseteamos el formulario
     this._resetFormProduct();
   }
 

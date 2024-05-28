@@ -62,6 +62,9 @@ class LoginPage extends BbvaCoreIntlMixin(CellsPage) {
     super.update && super.update(props);
   }
 
+  // Deberíamos traducir titulo de la pagina, y borrar elementos que no utilizamos como el menu y los botones superiores.
+  // this.t('key-title-page-home')
+  
   render() {
     return html` 
       <demo-web-template
